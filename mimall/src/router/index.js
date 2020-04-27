@@ -9,6 +9,7 @@ import Order from "../views/order.vue";
 import OrderConfirm from "../views/orderConfirm.vue";
 import OrderList from "../views/orderList.vue";
 import OrderPay from "../views/orderPay.vue";
+import Alipay from "../views/alipay.vue";
 
 Vue.use(VueRouter);
 
@@ -19,20 +20,21 @@ const routes = [
     component: Home,
     // 默认重定向到index中
     redirect: "/index",
+    // 根目录的子path中 / 可有可无
     children: [
       {
-        path: "/index",
+        path: "index",
         name: "index",
         component: Index
       },
       {
         // 动态路由
-        path: "/product/:id",
+        path: "product/:id",
         name: "product",
         component: Product
       },
       {
-        path: "/detail/:id",
+        path: "detail/:id",
         name: "detail",
         component: Detail
       }
@@ -53,21 +55,27 @@ const routes = [
     path: "/order",
     name: "order",
     component: Order,
+    // 注意子路由里的path就不能加 / 了
     children: [
       {
-        path: "/confirm",
+        path: "confirm",
         name: "order-confirm",
         component: OrderConfirm
       },
       {
-        path: "/list",
+        path: "list",
         name: "order-list",
         component: OrderList
       },
       {
-        path: "/pay",
+        path: "pay",
         name: "order-pay",
         component: OrderPay
+      },
+      {
+        path: "alipay",
+        name: "alipay",
+        component: Alipay
       }
     ]
   }

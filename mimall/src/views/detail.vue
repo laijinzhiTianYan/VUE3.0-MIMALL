@@ -1,7 +1,7 @@
 // 产品详情
 <template>
     <div>
-
+detail
     </div>
 </template>
 

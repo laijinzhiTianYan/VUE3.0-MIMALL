@@ -1,12 +1,11 @@
-// 支付页面
 <template>
     <div>
-order-pay
+oder-header
     </div>
 </template>
 
 <script>
 export default {
-    name:'order-pay'
+    name:'oder-header'
 }
 </script>

@@ -1,12 +1,12 @@
-// 订单确认
+// 产品页面
 <template>
     <div>
-
+product
     </div>
 </template>
 
 <script>
 export default {
-    name:'order-confirm'
+    name:'product'
 }
 </script>

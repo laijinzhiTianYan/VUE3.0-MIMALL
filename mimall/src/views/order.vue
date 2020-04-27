@@ -1,3 +1,4 @@
+// 承载核心
 <template>
   <div>
     <NavHeader></NavHeader>
@@ -9,7 +10,7 @@
 <script>
 
 export default {
-  name: "Home",
+  name: "order",
   components: {
   }
 };

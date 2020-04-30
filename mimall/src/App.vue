@@ -16,7 +16,7 @@ export default {
     // storage.setItem("abc",{"a":2},"user");   这个针对某个模块输入值
     // storage.clear("a");  清除第一层级
     // storage.clear('a','user');  这个是清除某个模块中的值
-    storage.setItem("abc",{"a":2});
+    storage.setItem("a",1); 
   }
 };
 </script>

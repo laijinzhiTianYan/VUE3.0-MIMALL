@@ -6,16 +6,21 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 // 插件在上，组件在下，养成好习惯
 import App from "./App.vue";
-import env from "./env";
-
+// import env from "./env";
+// mock开关
+const mock = true;
+if(mock){
+  // import是预编译加载，在编译的时候加载好了，而require是按序运行到，才加载
+  require("./mock/api");
+}
 // 根据前端的跨域方式做调整,比如下面的原始链接怎么到指定链接
 // 就是统一一个baseURL，这个值要根据跨域的方式做调整
 // 例如  /a/b : /api/a/b =>  /a/b
-axios.defaults.baseURL = "/api";
+ axios.defaults.baseURL = "/api";
 // 超时要设置好，对用户体验好一些
 axios.defaults.timeout = 8000;
 // 根据环境变量获取不同的请求地址
-axios.defaults.baseURL = env.baseURL;
+// axios.defaults.baseURL = env.baseURL;
 // interceptors是axios对请求request和响应response的值做拦截处理的机制
 // 在这里只做针对错误响应的一个拦截，
 // 对请求的拦截更多是用在后台管理系统中，对请求进行筛选和处理

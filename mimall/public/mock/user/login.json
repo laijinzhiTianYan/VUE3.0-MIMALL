@@ -1,0 +1,13 @@
+// 这个文件在直接用本地文件mock时会调用
+{
+    "status":0,
+    "data":{
+        "id":12,
+        "username":"admin",
+        "email": "admin@qq.com",
+        "phone": null,
+        "role": 0,
+        "createTime": 147904004010419,
+        "updateTime": 1313213124144144
+    }
+}

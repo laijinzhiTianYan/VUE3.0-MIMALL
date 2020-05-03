@@ -1,0 +1,15 @@
+// 复用flex
+@mixin flex ($jc:space-between,$ai:center){
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
+// 如果是这种写法width: $w;则使用时一定记得带单位
+// $size比较特殊些，取值比较复杂，所以用的时候记得带单位
+@mixin bgImg ($w:0,$h:0,$url:"",$size:contain){
+    display: inline-block;
+    width: $w+px;
+    height: $h+px;
+    background: url($url) no-repeat center;
+    background-size: $size;
+}

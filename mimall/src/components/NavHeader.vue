@@ -20,8 +20,86 @@
                 <div class="header-logo">
                     <a href="/#index"></a>
                 </div>
-                <div class="header-menu"></div>
-                <div class="header-search"></div>
+                <div class="header-menu">
+                    <!-- 不是单纯的链接，需要额外的内容时，用div不用a -->
+                    <div class="item-menu">
+                        <span>小米手机</span>
+                        <div class="children">
+                            <ul>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="item-menu">
+                        <span>红米手机</span>
+                        <div class="children"></div>
+                    </div>
+
+                     <div class="item-menu">
+                        <span>小米电视</span>
+                        <div class="children"></div>
+                    </div>
+                </div>
+                <div class="header-search">
+                    <div class="wapper">
+                        <input type="text" name="keyword">
+                        <a href="javascript:"></a>
+                    </div>
+                </div>
             </div>
         </div>
 nav-header
@@ -35,7 +113,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/scss/base.scss"
+@import "../assets/scss/base.scss";
+@import "../assets/scss/mixin.scss";
+@import "../assets/scss/config.scss";
  .header{
      .nav-topbar{
          height: 40px;
@@ -44,9 +124,7 @@ export default {
          color:#B0B0B0;
         //  container实现flex的基础
          .container{
-         display: flex;
-         justify-content: space-between;
-         align-content: center;
+             @include flex();
         //  虽然上面设置了color但是a标签依然需要覆盖一下
          a{
              display: inline-block;
@@ -59,23 +137,170 @@ export default {
              background-color: #FF6600;
              color: #fff;
              .icon-cart{
-                 background:url("/imgs/icon-cart-checked.png") no-repeat center;
-                 background-size: contain;
-                 display: inline-block;
-                 width: 16px;
-                 height: 12px;
-                 margin-right: 4px;
+                 @include bgImg(16,12,"/imgs/icon-cart-checked.png");
+                 margin-right: 6px;
              }
          }
         }
      }
      .nav-header{
          .container{
+             height: 112px;
+             @include flex();
+             position: relative;
              .header-logo{
                  display: inline-block;
-                 width: 53px;
-                 height: 52px;
-                 
+                 width: 55px;
+                 height: 55px;
+                 background-color: #FF6600;
+                 a{
+                     display: inline-block;
+                     width: 110px;
+                     height: 55px;
+                     &:before{
+                         content: "";
+                         @include bgImg(55,55,"/imgs/mi-logo.png");
+                        //  为了使变换协调，也要定义一个
+                         transition: margin .2s;
+                     }
+                     &:after{
+                         content: "";
+                         @include bgImg(55,55,"/imgs/mi-home.png");
+                     }
+                     &:hover:before{
+                        //  注意上面不能写成&:hover :before 不能带空格
+                        //  不能设太大，容器a本来就110，
+                        //  太大:before移动时会带跑:after
+                         margin-left:-55px;
+                        //  只在这里定义transition的话，只会在:hover时变换
+                        //  为了前后协调，在:hover结束后变回初始状态的before时也要定义一个
+                         transition: margin .2s;
+                     }
+                 }
+             }
+             .header-menu{
+                 display: inline-block;
+                 width: 643px;
+                 padding-left: 209px;
+                .item-menu{
+                    display: inline-block;
+                    color: #333;
+                    margin: 20px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    // line-height的设置需要考虑下
+                    line-height: 55px;
+                    span{
+                        cursor: pointer;
+                    }
+                    // 下拉菜单部分
+                    &:hover{
+                        color: $colorA;
+                        .children{
+                            height:220px;
+                            opacity: 1;
+                        }
+                    }
+                    // 如果想实现现在小米商城children栏融入背景效果，就要从html级把children单个独立出去和container一个等级
+                    .children{
+                        // 如果不给他的父级加relative，就会相对根定位，不好控制
+                        position: absolute;
+                        top: 112px;
+                        left: 0px;
+                        width: 100%;
+                        // 不设置height也可以，因为子元素内容会撑开
+                        // 而且要实现鼠标覆盖才会弹出的效果
+                        border-top: 1px solid #E5E5E5;
+                        box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
+                        // 防止由于层级关系被遮住
+                        z-index: 8;
+                        // 初始状态
+                        height: 0;
+                        opacity: 0;
+                        // 加了overflow以后,就不会出现鼠标放在隐形的children上也能唤醒这种情况
+                        // overflow加在item-menu上就不行，我想大概是因为children也属于item-menu吧 
+                        overflow: hidden;
+                        ul{
+                            width: 1226px;
+                            display: flex;
+                            justify-content: space-around;
+                            .product{
+                                // 也可以直接设置百分比宽度，这样就不用设置url的宽和flex布局了
+                                // width: 16.6%;
+                                height: 220px;
+                                float: left;
+                                // 文字的高度和居中一般设置下面这两个
+                                font-size: 12px;
+                                text-align: center;
+                                line-height: 12px;
+                                position: relative;
+                                a{
+                                    // a标签本身是行内标签，规定不可以包含块级标签
+                                    // 所以要把他转成行内块，撑开高度
+                                    display: inline-block;
+                                    img{
+                                        // 宽高只定一个，以防不规整图片变形，按需取舍
+                                        height: 111px;
+                                        // 定高是因为下面有字，伸缩可能会破坏结构
+                                        width: auto;
+                                        margin-top: 26px;
+                                    }
+                                    // 作为图片容器还是要限制下高度的
+                                    .pro-img{
+                                        height: 156px;
+                                    }
+                                    .pro-name{
+                                        font-weight: bold;
+                                        margin-bottom: 8px;
+                                        color: $colorB;
+                                    }
+                                    .pro-price{
+                                        color: $colorA;
+                                    }
+                                }
+                                // 单条线的常用伪类设置
+                                &:before{
+                                    content: " ";
+                                    position: absolute;
+                                    top: 28px;
+                                    right: 0;
+                                    width: 1px;
+                                    height: 99px;
+                                    border-right: 1px solid $colorF;
+                                }
+                                &:last-child:before{
+                                    display: none;
+                                }
+                            }
+                           }
+                     }
+
+                }
+
+             }
+             .header-search{
+                 width: 319px;
+                 .wapper{
+                     height: 50px;
+                     border: 1px solid #E0E0E0;
+                     @include flex();
+                     input{
+                        //  去掉浏览器默认的输入框阴影
+                         border: none;
+                         border-right: 1px solid #E0E0E0;
+                         width: 263px;
+                         height: 50px;
+                         font-size: 16px;
+                        //  设置padding保证输入不会贴边
+                         padding-left: 14px;
+                         padding-right: 14px;
+                     }
+                     a{
+                         @include bgImg(55,50,"/imgs/icon-search.png",18px);
+                     }
+
+                 }
+
              }
 
          }

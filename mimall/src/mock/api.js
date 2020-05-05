@@ -11,6 +11,7 @@ Mock.mock("/api/user/login",{
         "updateTime": 1313213124144144
     }
 })
+// 注意利用这种方式mock是不会有xhr请求的，他是拦截ajax请求的方式
 // 这个文件是mockjs拦截ajax请求模拟mock时调用，开关在main.js
 // 本身是有一系列语法的
 // 如"id|100-200":0,就是产生100-200之间的id值

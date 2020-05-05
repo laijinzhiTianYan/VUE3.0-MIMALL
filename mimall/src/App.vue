@@ -36,9 +36,11 @@ export default {
     // 这种是利用mockjs拦截请求实现mock模拟的方式
     // 不需要任何更改，只需打开main中的mock开关即可
     // 文件设置在src下的mock文件夹中
-      this.axios.get("/user/login").then((res) => {
-      this.res = res;
-      });
+    // 这种mock方式是读取不到xhr请求的，因为它的本质就是拦截ajax请求，代入模拟的数据
+      // this.axios.get("/user/login").then((res) => {
+      // this.res = res;
+      // console.log(res);
+      // });
 
 
     // storage的使用

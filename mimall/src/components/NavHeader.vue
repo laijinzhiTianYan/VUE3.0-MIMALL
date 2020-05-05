@@ -86,12 +86,126 @@
 
                     <div class="item-menu">
                         <span>红米手机</span>
-                        <div class="children"></div>
+                        <div class="children">
+                            <ul>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米手机</div>
+                                        <div class="pro-price">价格吓死你哦</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                      <div class="item-menu">
                         <span>小米电视</span>
-                        <div class="children"></div>
+                        <div class="children">
+                            <ul>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="/imgs/nav-img/nav-3-1.webp" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">Redmi 智能电视 MAX 98"</div>
+                                        <div class="pro-price">19999</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="/imgs/nav-img/nav-3-2.jpg" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米全面屏电视 55英寸</div>
+                                        <div class="pro-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="/imgs/nav-img/nav-3-3.png" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米电视4A 32英寸</div>
+                                        <div class="pro-price">699元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="/imgs/nav-img/nav-3-4.jpg" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米电视4A 55英寸</div>
+                                        <div class="pro-price">1799元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="/imgs/nav-img/nav-3-5.webp" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">Redmi 红米电视 70英寸</div>
+                                        <div class="pro-price">3099元</div>
+                                    </a>
+                                </li>
+                                <li class="product">
+                                    <a href="javascript:" target="_blank">
+                                        <div class="pro-img">
+                                            <img src="/imgs/nav-img/nav-3-6.png" alt="手机图片">
+                                        </div>
+                                        <div class="pro-name">小米壁画电视 65英寸</div>
+                                        <div class="pro-price">6999元</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="header-search">
@@ -225,8 +339,11 @@ export default {
                             display: flex;
                             justify-content: space-around;
                             .product{
-                                // 也可以直接设置百分比宽度，这样就不用设置url的宽和flex布局了
+                                // 也可以直接设置百分比宽度，这样就不用设置url的宽和flex相关布局了
+                                // 使用flex布局有个问题，就是图片和伪类before的丨杠离得太近了，
+                                // 解决方法就是在子元素上使用flex-basis
                                 // width: 16.6%;
+                                flex-basis: 16.6%;
                                 height: 220px;
                                 float: left;
                                 // 文字的高度和居中一般设置下面这两个
@@ -266,7 +383,7 @@ export default {
                                     right: 0;
                                     width: 1px;
                                     height: 99px;
-                                    border-right: 1px solid $colorF;
+                                    border-left: 1px solid $colorF;
                                 }
                                 &:last-child:before{
                                     display: none;

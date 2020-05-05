@@ -9,9 +9,11 @@
                     <a href="javascript:">协议规则</a>
                 </div>
                 <div class="topbar-user">
-                    <a href="javascript:">登陆</a>
-                    <a href="javascript:">注册</a>
-                    <a href="javascript:" class="my-cart"><span class="icon-cart"></span>购物车</a>
+                    
+                    <a href="javascript:" v-if="username">{{username}}</a>
+                    <a href="javascript:" v-if="!username" @click="login">登陆</a>
+                    <a href="javascript:" v-if="username">我的订单</a>
+                    <a href="javascript:" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车</a>
                 </div>
             </div>
         </div>
@@ -26,58 +28,17 @@
                         <span>小米手机</span>
                         <div class="children">
                             <ul>
-                                <li class="product">
-                                    <a href="javascript:" target="_blank">
+                                <li class="product" v-for = "(item, index) in phoneList" :key="index">
+                                    <!-- 注意这里“”中变量和字符串拼接的写法 -->
+                                    <!-- 要和router中的路径对上 -->
+                                    <a :href="'/#/product/'+item.id" target="_blank">
                                         <div class="pro-img">
-                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
+                                            <img :src="item.mainImage" :alt="item.name">
                                         </div>
-                                        <div class="pro-name">小米手机</div>
-                                        <div class="pro-price">价格吓死你哦</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="javascript:" target="_blank">
-                                        <div class="pro-img">
-                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
-                                        </div>
-                                        <div class="pro-name">小米手机</div>
-                                        <div class="pro-price">价格吓死你哦</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="javascript:" target="_blank">
-                                        <div class="pro-img">
-                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
-                                        </div>
-                                        <div class="pro-name">小米手机</div>
-                                        <div class="pro-price">价格吓死你哦</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="javascript:" target="_blank">
-                                        <div class="pro-img">
-                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
-                                        </div>
-                                        <div class="pro-name">小米手机</div>
-                                        <div class="pro-price">价格吓死你哦</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="javascript:" target="_blank">
-                                        <div class="pro-img">
-                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
-                                        </div>
-                                        <div class="pro-name">小米手机</div>
-                                        <div class="pro-price">价格吓死你哦</div>
-                                    </a>
-                                </li>
-                                <li class="product">
-                                    <a href="javascript:" target="_blank">
-                                        <div class="pro-img">
-                                            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90" alt="手机图片">
-                                        </div>
-                                        <div class="pro-name">小米手机</div>
-                                        <div class="pro-price">价格吓死你哦</div>
+                                        <div class="pro-name">{{item.name}}</div>
+                                        <!-- 数据过滤器的使用 -->
+                                        <!-- 函数没有参数就可以简写，如currency()写成currency -->
+                                        <div class="pro-price">{{item.price | currency()}}</div>
                                     </a>
                                 </li>
                             </ul>
@@ -216,13 +177,54 @@
                 </div>
             </div>
         </div>
-nav-header
     </div>
 </template>
 
 <script>
 export default {
-    name:'nav-header'
+    name:"nav-header",
+    data () {
+         return {
+             username: "",
+             phoneList: []
+         }
+    },
+    mounted () {
+         this.getProductList();
+    },
+    methods: {
+        getProductList(){
+            // 注意get传参要用params
+            this.axios.get("/products",{
+                params:{
+                    // 后台要求的请求结构和识别码
+                    categoryId:"100012",
+                    // 请求加上pageSize即让服务端返回设置的条数，去掉以后即服务端发送全部数据
+                    pageSize:6
+                }
+            }).then((res) => {
+               if (res.list.length >= 6) {
+                   this.phoneList = res.list.slice(0,6);
+               };
+            })
+        },
+        login(){
+            this.router.push("/login");
+        },
+        goToCart(){
+            // 常见面试题，怎么跳转路由，用this.$router.push()
+            // 动态路由就是router文件中借助：id这种形式，如/product/：id
+            // 路由取参数方法，使用router.params 或者router.query取参
+            this.$router.push("/cart");
+        }
+    },
+    // 数据过滤器，vue3.0可能有变动，注意一下
+    filters: {
+        currency(val){
+            if(!val) return '0.00';
+            return "￥" + val.toFixed(1) + '元';
+        }
+    }
 }
 </script>
 
@@ -271,24 +273,26 @@ export default {
                      display: inline-block;
                      width: 110px;
                      height: 55px;
-                     &:before{
+                     &::before{
                          content: "";
                          @include bgImg(55,55,"/imgs/mi-logo.png");
                         //  为了使变换协调，也要定义一个
-                         transition: margin .2s;
+                         transition: margin .4s;
                      }
-                     &:after{
+                     &::after{
                          content: "";
+                         margin-left: -110px;
                          @include bgImg(55,55,"/imgs/mi-home.png");
                      }
-                     &:hover:before{
+                     &:hover::before{
                         //  注意上面不能写成&:hover :before 不能带空格
                         //  不能设太大，容器a本来就110，
                         //  太大:before移动时会带跑:after
-                         margin-left:-55px;
+                        //  margin-left:-55px;
                         //  只在这里定义transition的话，只会在:hover时变换
                         //  为了前后协调，在:hover结束后变回初始状态的before时也要定义一个
-                         transition: margin .2s;
+                        margin-left: 55px;
+                        transition: margin .4s;
                      }
                  }
              }
@@ -325,7 +329,7 @@ export default {
                         // 不设置height也可以，因为子元素内容会撑开
                         // 而且要实现鼠标覆盖才会弹出的效果
                         border-top: 1px solid #E5E5E5;
-                        box-shadow: 0px 7px 6px 0px rgba(0, 0, 0, 0.11);
+                        box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.11);
                         // 防止由于层级关系被遮住
                         z-index: 8;
                         // 初始状态

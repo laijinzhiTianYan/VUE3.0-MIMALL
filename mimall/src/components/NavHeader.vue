@@ -47,6 +47,7 @@
 
                     <div class="item-menu">
                         <span>红米手机</span>
+                        <!-- 红米手机没有用数据，也没有动态渲染 -->
                         <div class="children">
                             <ul>
                                 <li class="product">
@@ -109,6 +110,7 @@
 
                      <div class="item-menu">
                         <span>小米电视</span>
+                        <!-- 小米电视这块手动引入的资料，没有用v-for渲染 -->
                         <div class="children">
                             <ul>
                                 <li class="product">
@@ -229,6 +231,7 @@ export default {
 </script>
 
 <style lang="scss">
+// 注意这是引入到style标签中的
 @import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";

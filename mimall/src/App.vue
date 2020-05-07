@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    能看到我？
   </div>
 </template>
 

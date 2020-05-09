@@ -48,7 +48,7 @@ export default {
             img{
                 display: inline-block;
                 width: 20px;
-                
+                xiugai
             }
         }
     }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    index页面
+    这是index.vue的视图层
     <service-bar></service-bar>
   </div>
   

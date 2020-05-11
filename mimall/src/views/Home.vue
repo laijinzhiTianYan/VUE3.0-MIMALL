@@ -1,6 +1,6 @@
 <template>
   <div>
-    Home页面
+    这是home.vue的视图层
     <nav-header></nav-header>
     <!-- router-view加载的就是index.vue里头的东西 -->
     <router-view></router-view>

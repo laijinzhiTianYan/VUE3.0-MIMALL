@@ -341,6 +341,8 @@ export default {
                         // 加了overflow以后,就不会出现鼠标放在隐形的children上也能唤醒这种情况
                         // overflow加在item-menu上就不行，我想大概是因为children也属于item-menu吧 
                         overflow: hidden;
+                        // 如果不加背景色就会出现透明背景，导致内容镂空
+                        background-color: $colorG;
                         ul{
                             width: 1226px;
                             display: flex;

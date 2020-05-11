@@ -51,15 +51,27 @@ export default {
     // 把container居中
     @include flex(center,center);
     .container{
-        outline: 1px dashed red;
+        // outline: 1px dashed red;
         @include flex(center,center);
         .item{
+            //  outline: 1px dashed blue;
             @include flex(center,center);
             flex-basis: 25%;
-            outline: 1px dashed blue;
+            position: relative;
             img{
                 width: 20px;
                 margin-right:8px;
+            }
+            &::after{
+                content: "";
+                height: 34px;
+                border-right: 1px solid #E5E5E5;
+                position: absolute;
+                right: 0;
+                top: -9px;
+            }
+            &:last-child::after{
+                display: none;
             }
         }
     }

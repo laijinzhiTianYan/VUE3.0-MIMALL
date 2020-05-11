@@ -385,7 +385,7 @@ export default {
                                     }
                                 }
                                 // 单条线的常用伪类设置
-                                &:before{
+                                &::before{
                                     content: " ";
                                     position: absolute;
                                     top: 28px;
@@ -394,7 +394,7 @@ export default {
                                     height: 99px;
                                     border-left: 1px solid $colorF;
                                 }
-                                &:last-child:before{
+                                &:last-child::before{
                                     display: none;
                                 }
                             }

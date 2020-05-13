@@ -11,7 +11,7 @@
           <swiper  ref="mySwiper" :options="swiperOption">
             <swiper-slide  v-for = "(item, index) in slideList" :key="index">
               <!-- 一定要注意用到指令的话，href里一定要用‘’括起来 -->
-              <a :href="'/#/product/'+item.id"><img src="" alt=""></a>
+              <a :href="'/#/product/'+item.id"><img src="" alt="">修改修改</a>
             </swiper-slide>
           </swiper>
         </div>

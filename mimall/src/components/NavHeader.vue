@@ -333,6 +333,7 @@ export default {
                         // 而且要实现鼠标覆盖才会弹出的效果
                         border-top: 1px solid #E5E5E5;
                         box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.11);
+                        border-radius: 5px 5px 10px 10px;
                         // 防止由于层级关系被遮住
                         z-index: 8;
                         // 初始状态

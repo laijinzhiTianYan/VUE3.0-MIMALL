@@ -11,7 +11,7 @@
           <swiper  ref="mySwiper" :options="swiperOption">
             <swiper-slide  v-for = "(item, index) in slideList" :key="index">
               <!-- 一定要注意用到指令的话，href里一定要用‘’括起来 -->
-              <a :href="'/#/product/'+item.id"><img src="" alt="">修改修改</a>
+              <a :href="'/#/product/'+item.id"><img :src="item.img" alt=""></a>
             </swiper-slide>
           </swiper>
         </div>
@@ -72,9 +72,29 @@ export default {
         {
           id:"",
           img:"/imgs/slider/slide-4.jpg"
+        },
+        {
+          id:"",
+          img:"/imgs/slider/slide-5.jpg"
         }
       ]
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+// 自定义样式覆盖插件样式
+.index{
+  .container{
+    .swiper-box{
+      height: 451px;
+      img{
+        // 设置图片宽100%可使图片均匀平铺
+        width: 100%;
+        // height: 100%;
+      }
+    }
+  }
+}
+</style>

@@ -8,11 +8,13 @@
 
         <!-- 轮播区 -->
         <div class="swiper-box">
-          <swiper  ref="mySwiper" :options="swiperOption">
+          <swiper  ref = "mySwiper" :options="swiperOptions">
             <swiper-slide  v-for = "(item, index) in slideList" :key="index">
               <!-- 一定要注意用到指令的话，href里一定要用‘’括起来 -->
-              <a :href="'/#/product/'+item.id"><img :src="item.img" alt=""></a>
+              <a :href="'/#/product/'+item.id"><img :src = "item.img" alt = ""></a>
             </swiper-slide>
+            <!-- 这块应该就是控制器吧，试一下 -->
+            <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
         </div>
 
@@ -51,8 +53,11 @@ export default {
   },
   data () {
     return {
-      swiperOption:{
-
+      swiperOptions:{
+        pagination:{
+          el:".swiper-pagination",
+          clickable: true
+        }
       },
       // 其实slideList的数据应该从后端接口动态索取，这里自己手动写死
       // 这里前三张是设置了id可以跳转的，后面的不能跳转
@@ -79,6 +84,14 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    swiper(){
+      return this.$refs.mySwiper.$swiper
+    }
+  },
+  mounted () {
+    console.log("current swiper instance object 当前swiper",this.swiper)
   }
 };
 </script>

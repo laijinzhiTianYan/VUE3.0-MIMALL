@@ -11,10 +11,12 @@
           <swiper  ref = "mySwiper" :options="swiperOptions">
             <swiper-slide  v-for = "(item, index) in slideList" :key="index">
               <!-- 一定要注意用到指令的话，href里一定要用‘’括起来 -->
-              <a :href="'/#/product/'+item.id"><img :src = "item.img" alt = ""></a>
+              <a :href="'/#/product/'+item.id"><img :src = "item.img" alt = "'picture'+item.id"></a>
             </swiper-slide>
             <!-- 这块应该就是控制器吧，试一下 -->
             <div class="swiper-pagination" slot="pagination"></div>
+            <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
+            <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
           </swiper>
         </div>
 
@@ -54,10 +56,23 @@ export default {
   data () {
     return {
       swiperOptions:{
+        // 自动播放
+        autoplay: {
+          delay: 4000,//1秒切换一次
+        },
+        loop: true,
+        // 开启淡入淡出
+        effect : 'fade',
         pagination:{
           el:".swiper-pagination",
+          // 加了这个出现图片下面的点导航
           clickable: true
-        }
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        mousewheel: true,
       },
       // 其实slideList的数据应该从后端接口动态索取，这里自己手动写死
       // 这里前三张是设置了id可以跳转的，后面的不能跳转
@@ -105,7 +120,7 @@ export default {
       img{
         // 设置图片宽100%可使图片均匀平铺
         width: 100%;
-        // height: 100%;
+        height: 100%;
       }
     }
   }

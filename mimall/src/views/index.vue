@@ -8,7 +8,47 @@
 
         <!-- 轮播区 -->
         <div class="swiper-box">
-          <swiper  ref = "mySwiper" :options="swiperOptions">
+
+          <!-- 左侧菜单区 -->
+          <div class="nav-menu">
+            <ul class="menu-wrap">
+              <li class="menu-item">
+                <a href="javascript:">手机 电话卡</a>
+                <div class="children"></div>
+              </li>
+              <li class="menu-item">
+                <a href="javascript:">电视 盒子</a>
+                <div class="children"></div>
+              </li>
+              <li class="menu-item">
+                <a href="javascript:">笔记本 显示器 平板</a>
+                <div class="children"></div>
+              </li>
+              <li class="menu-item">
+                <a href="javascript:">家电 插线板</a>
+                <div class="children"></div>
+              </li>
+              <li class="menu-item">
+                <a href="javascript:">出行 穿戴</a>
+                <div class="children"></div>
+              </li>
+              <li class="menu-item">
+                <a href="javascript:">电源 配件</a>
+                <div class="children"></div>
+              </li>
+              <li class="menu-item">
+                <a href="javascript:">耳机 音箱</a>
+                <div class="children"></div>
+              </li>
+              <li class="menu-item">
+                <a href="javascript:">生活 箱包</a>
+                <div class="children"></div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 轮播图片区 -->
+          <swiper  ref = "indexSwiper" :options="swiperOptions">
             <swiper-slide  v-for = "(item, index) in slideList" :key="index">
               <!-- 一定要注意用到指令的话，href里一定要用‘’括起来 -->
               <a :href="'/#/product/'+item.id"><img :src = "item.img" alt = "'picture'+item.id"></a>
@@ -20,11 +60,14 @@
           </swiper>
         </div>
 
+
         <!-- 广告区 -->
         <div class="ads-box"></div>
 
+
         <!-- 大的banner -->
         <div class="banner"></div>
+
 
         <!-- 产品缩略区 -->
         <div class="product-box"></div>
@@ -105,7 +148,7 @@ export default {
   },
   computed: {
     swiper(){
-      return this.$refs.mySwiper.$swiper
+      return this.$refs.indexSwiper.$swiper
     }
   },
   mounted () {
@@ -115,13 +158,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/scss/base.scss";
+@import "../assets/scss/mixin.scss";
+@import "../assets/scss/config.scss";
 // 自定义样式覆盖插件样式
 .index{
   .container{
+    outline: dashed 1px;
+    position: relative;
     --swiper-navigation-color: #edf1ee;/* 设置导航器颜色 */
     --swiper-navigation-opacity: 1;/* 透明度 */
     --swiper-navigation-size: 30px;/* 设置按钮大小 */
     --swiper-pagination-color: #edf1ee;/* 分页器颜色 */
+    .nav-menu{
+      position: absolute;
+      width: 264px;
+      height: 460px;
+      line-height: 16px;
+      font-size: 16px;
+      background-color: #55585A;
+      z-index: 3;
+      @include flex();
+        li{
+          outline: solid red;
+          height: 50px;
+          width: 264px;
+          @include flex(center，center);
+          a{
+            outline: dashed blue;
+            display: inline-block;
+            margin-left: 30px;
+            color: #FFFFFF;
+        }
+      }
+    }
     .swiper-box{
       height: 460px;
       .swiper-pagination{

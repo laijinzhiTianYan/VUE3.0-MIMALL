@@ -58,21 +58,24 @@ export default {
       swiperOptions:{
         // 自动播放
         autoplay: {
-          delay: 4000,//1秒切换一次
+          delay: 2500,//1秒切换一次
         },
+        // 开启loop
+        // Swiper Animate不适用于loop模式
         loop: true,
         // 开启淡入淡出
         effect : 'fade',
         pagination:{
           el:".swiper-pagination",
           // 加了这个出现图片下面的点导航
-          clickable: true
+          clickable: true,
+          // 多余小点动态隐藏
+          // dynamicBullets: true,
         },
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
-        },
-        mousewheel: true,
+        }
       },
       // 其实slideList的数据应该从后端接口动态索取，这里自己手动写死
       // 这里前三张是设置了id可以跳转的，后面的不能跳转
@@ -115,8 +118,14 @@ export default {
 // 自定义样式覆盖插件样式
 .index{
   .container{
+    --swiper-navigation-color: #edf1ee;/* 设置导航器颜色 */
+    --swiper-navigation-opacity: 1;/* 透明度 */
+    --swiper-navigation-size: 30px;/* 设置按钮大小 */
+    --swiper-pagination-color: #edf1ee;/* 分页器颜色 */
     .swiper-box{
-      height: 451px;
+      height: 460px;
+      .swiper-pagination{
+      }
       img{
         // 设置图片宽100%可使图片均匀平铺
         width: 100%;

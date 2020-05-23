@@ -195,6 +195,7 @@ export default {
     .swiper-box{
       height: 460px;
       .swiper-pagination{
+        明天做
       }
       img{
         // 设置图片宽100%可使图片均匀平铺

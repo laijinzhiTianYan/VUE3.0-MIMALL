@@ -14,8 +14,18 @@
             <ul class="menu-wrap">
               <li class="menu-item">
                 <a href="javascript:">手机 电话卡</a>
-                <div class="children"></div>
+                <div class="children">
+                  <ul v-for = "(item, index) in menuList" :key = "index"><!-- 循环6次 -->
+                    <li v-for = "(sub,id) in item" :key = "id"><!-- 内循环4次，迭代内部对象，给没有数据的留退路 -->
+                      <a :href = " sub ? '/#/product' + sub.id : '#' ">
+                        <img :src="sub[img] || '/imgs/item-box-1.png' " alt="sub[name]">
+                        {{sub.name || "待插入" }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </li>
+
               <li class="menu-item">
                 <a href="javascript:">电视 盒子</a>
                 <div class="children"></div>
@@ -49,9 +59,9 @@
 
           <!-- 轮播图片区 -->
           <swiper  ref = "indexSwiper" :options="swiperOptions">
-            <swiper-slide  v-for = "(item, index) in slideList" :key="index">
+            <swiper-slide  v-for = "(item, index) in slideList" :key = "index">
               <!-- 一定要注意用到指令的话，href里一定要用‘’括起来 -->
-              <a :href="'/#/product/'+item.id"><img :src = "item.img" alt = "'picture'+item.id"></a>
+              <a :href = "'/#/product/'+item.id"><img :src = "item.img" alt = "'picture'+item.id"></a>
             </swiper-slide>
             <!-- 这块应该就是控制器吧，试一下 -->
             <div class="swiper-pagination" slot="pagination"></div>
@@ -143,6 +153,35 @@ export default {
           id:"",
           img:"/imgs/slider/slide-5.jpg"
         }
+      ],
+      //menuList储存侧边栏的弹出信息数据
+      //横向4个，纵向6组
+      menuList:[
+        [//每个里头有四个对象
+          {
+            id: 30,
+            img: "/imgs/item-box-1.png",
+            name: "小米CC9"
+          },{
+            id: 31,
+            img: "/imgs/item-box-2.png",
+            name: "小米8青春版"
+          },{
+            id: 32,
+            img: "/imgs/item-box-3.png",
+            name: "Redmi K20 pro"
+          },{
+            id: 33,
+            img: "/imgs/item-box-4.png",
+            name: "移动4G专区"
+          }
+
+        ],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
       ]
     }
   },
@@ -174,28 +213,44 @@ export default {
       position: absolute;
       width: 264px;
       height: 460px;
-      line-height: 16px;
       font-size: 16px;
-      background-color: #55585A;
+      background-color: #55585a7a;//用opacity控制透明度的话，子代文字也会透明,因此直接调背景色透明度最佳
       z-index: 3;
       @include flex();
-        li{
+      .menu-wrap{//ul标签
+        // @include flex();//上一级设置了flex这里就不需要了，因为效果已经达到了
+        // flex-direction: column;
+        .menu-item{//li标签
           outline: solid red;
+          @include flex(center，center);
           height: 50px;
           width: 264px;
-          @include flex(center，center);
+          line-height: 50px;
           a{
             outline: dashed blue;
             display: inline-block;
+            position: relative;//因为要定位伪类
             margin-left: 30px;
             color: #FFFFFF;
+            &::after{
+              content: "";
+              @include bgImg(10,15,"/imgs/icon-arrow.png");
+              position: absolute;
+              left: 194px;
+              top: 17px;
+            }
+          }
+          &:hover{
+            background-color: $colorA;
+          }
         }
+
       }
     }
     .swiper-box{
       height: 460px;
       .swiper-pagination{
-        明天做
+        
       }
       img{
         // 设置图片宽100%可使图片均匀平铺

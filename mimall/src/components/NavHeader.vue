@@ -108,7 +108,7 @@
                         </div>
                     </div>
 
-                     <div class="item-menu">
+                    <div class="item-menu">
                         <span>小米电视</span>
                         <!-- 小米电视这块手动引入的资料，没有用v-for渲染 -->
                         <div class="children">
@@ -186,13 +186,13 @@
 export default {
     name:"nav-header",
     data () {
-         return {
-             username: "",
-             phoneList: []
-         }
+        return {
+            username: "",
+            phoneList: []
+        }
     },
     mounted () {
-         this.getProductList();
+        this.getProductList();
     },
     methods: {
         getProductList(){
@@ -205,9 +205,9 @@ export default {
                     pageSize:6
                 }
             }).then((res) => {
-               if (res.list.length >= 6) {
-                   this.phoneList = res.list.slice(0,6);
-               };
+                if (res.list.length >= 6) {
+                    this.phoneList = res.list.slice(0,6);
+                };
             })
         },
         login(){
@@ -264,6 +264,7 @@ export default {
      }
      .nav-header{
          .container{
+             outline: dashed .1px gray;
              height: 112px;
              @include flex();
              position: relative;
@@ -300,18 +301,23 @@ export default {
                  }
              }
              .header-menu{
+                 outline: dashed .1px red;
                  display: inline-block;
                  width: 643px;
+                 height: 112px;
                  padding-left: 209px;
                 .item-menu{
+                    outline: dashed .1px blue;
                     display: inline-block;
                     color: #333;
-                    margin: 20px;
+                    margin: 0 20px 0 20px;
+                    height: 112px;
                     font-size: 16px;
                     font-weight: bold;
                     // line-height的设置需要考虑下
-                    line-height: 55px;
+                    line-height: 112px;
                     span{
+                        outline: auto;
                         cursor: pointer;
                     }
                     // 下拉菜单部分
@@ -399,12 +405,12 @@ export default {
                                     display: none;
                                 }
                             }
-                           }
-                     }
+                            }
+                        }
 
                 }
 
-             }
+                }
              .header-search{
                  width: 319px;
                  .wapper{

@@ -17,8 +17,8 @@
                 <div class="children">
                   <ul v-for = "(item, index) in menuList" :key = "index"><!-- 循环6次 -->
                     <li v-for = "(sub,id) in item" :key = "id"><!-- 内循环4次，迭代内部对象，给没有数据的留退路 -->
-                      <a :href = " sub ? '/#/product' + sub.id : '#' ">
-                        <img :src="sub[img] || '/imgs/item-box-1.png' " alt="sub[name]">
+                      <a :href = " sub ? '/#/product/' + sub.id : '#' ">
+                        <img :src="sub['img'] || '/imgs/item-box-1.png' " alt="sub[name]">
                         {{sub.name || "待插入" }}
                       </a>
                     </li>
@@ -72,15 +72,68 @@
 
 
         <!-- 广告区 -->
-        <div class="ads-box"></div>
+        <div class="ads-box">
+          <a v-for = "(item, index) in adsList" :key = "index" :href="'/#/product/' + item.id "><img :src="item.img" alt="item.id"></a>
+        </div>
 
 
         <!-- 大的banner -->
-        <div class="banner"></div>
+        <div class="banner">
+          <a href="/#/product/30"><img src="/imgs/banner-1.png" alt="banner-img"></a>
+        </div>
 
 
         <!-- 产品缩略区 -->
-        <div class="product-box"></div>
+        <div class="product-box">
+          <h2>手机</h2>
+          <div class="wrapper">
+            <div class="banner-left">
+
+            </div>
+
+            <div class="list-box">
+              <div class="list">
+                <div class="list-item"><!-- 单个产品块 -->
+                  <span>新品</span>
+                  <div class="list-item-img">
+                    <img src="" alt="">
+                  </div>
+                  <div class="list-item-info">
+                    <h3>小米9</h3>
+                    <p>骁龙855，索尼4800万超广角微距</p>
+                    <p>2999元</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+<!-- .product-box{
+  h2{}
+  .wrapper{
+    .banner-left{
+    }
+
+    .list-box{
+      .list{
+        .list-item{
+          span{}
+          .list-item-img{
+            img{}
+          }
+          .list-item-info{
+            h3{}
+            p{}
+          }
+        }
+      }
+    }
+  }
+} -->
+
+
 
       </div>
     </div>
@@ -154,9 +207,9 @@ export default {
           img:"/imgs/slider/slide-5.jpg"
         }
       ],
-      //menuList储存侧边栏的弹出信息数据
+      
       //横向4个，纵向6组
-      menuList:[
+      menuList:[//menuList储存手机，电话卡侧边栏的弹出信息数据
         [//每个里头有四个对象
           {
             id: 30,
@@ -168,11 +221,11 @@ export default {
             name: "小米8青春版"
           },{
             id: 32,
-            img: "/imgs/item-box-3.png",
+            img: "/imgs/item-box-3.jpg",
             name: "Redmi K20 pro"
           },{
             id: 33,
-            img: "/imgs/item-box-4.png",
+            img: "/imgs/item-box-4.jpg",
             name: "移动4G专区"
           }
 
@@ -182,6 +235,22 @@ export default {
         [0,0,0,0],
         [0,0,0,0],
         [0,0,0,0],
+      ],
+
+      adsList:[
+        {
+          id:33,
+          img:"/imgs/ads/ads-1.png"
+        },{
+          id:48,
+          img:"/imgs/ads/ads-2.jpg"
+        },{
+          id:45,
+          img:"/imgs/ads/ads-3.png"
+        },{
+          id:47,
+          img:"/imgs/ads/ads-4.jpg"
+        },
       ]
     }
   },
@@ -209,7 +278,7 @@ export default {
     --swiper-navigation-opacity: 1;/* 透明度 */
     --swiper-navigation-size: 30px;/* 设置按钮大小 */
     --swiper-pagination-color: #edf1ee;/* 分页器颜色 */
-    .nav-menu{
+    .nav-menu{//其实他应该包在swiper-box中的，这边把侧边栏独立出来了
       position: absolute;
       width: 264px;
       height: 460px;
@@ -227,7 +296,7 @@ export default {
           width: 264px;
           line-height: 50px;
           a{
-            outline: dashed blue;
+            outline: dashed brown;
             display: inline-block;
             position: relative;//因为要定位伪类
             margin-left: 30px;
@@ -242,15 +311,72 @@ export default {
           }
           &:hover{
             background-color: $colorA;
+            .children{
+              visibility: visible;
+            }
+          }
+          .children{
+            visibility: hidden;
+            width: 962px;
+            height: 460px;
+            position: absolute;
+            left: 264px;
+            top: 0;
+            background-color: $colorG;
+            box-shadow:1px 5px 6px 0px rgba(0, 0, 0, 0.11);
+            ul{
+              @include flex();
+              height: 76.6px;
+              li{
+                // @include flex(start,center);
+                height: 76.6px;
+                // width: 40%;
+                flex: 1;
+                line-height: 76.6px;
+                font-size: 14px;
+                a{
+                  outline: dashed .1px black;
+                  display: inline-block;
+                  color: $colorB;
+                  z-index: 1;
+                  img{
+                    height: 42px;
+                    width: 35px;
+                    margin-right: 15px;
+                    vertical-align: middle;
+                  }
+                  &::after{//这里是因为上面也设置了a标签的伪元素样式，所以也跟着显示出来，这里直接去掉即可
+                    content: "";
+                    display: none;
+                  }
+                }
+              }
+            }
           }
         }
 
       }
     }
+
     .swiper-box{
       height: 460px;
+      .swiper-button-prev{
+        left: 278px;
+        &:hover{
+          background-color: #55585a7a;
+        }
+      }
+      .swiper-button-next{
+        &:hover{
+          background-color: #55585a7a;
+        }
+      }
       .swiper-pagination{
-        
+        width: 400px;
+        left: auto;
+        right: 30px;
+        bottom: 20px;
+        text-align: right;
       }
       img{
         // 设置图片宽100%可使图片均匀平铺
@@ -258,6 +384,56 @@ export default {
         height: 100%;
       }
     }
+
+    .ads-box{
+      height: 167px;
+      margin-top: 14px;
+      margin-bottom: 31px;
+      @include flex();
+      a{
+        display: inline-block;
+        img{//其实最好的是给a标签设置宽高，然后图片宽高100%完全填充满，这里是因为图片规整所以都可以
+          width: 296px;
+          height: 167px;
+        }
+      }
+    }
+
+    .banner{
+      margin-bottom: 50px;
+      a{
+        display: inline-block;
+        width: 1226px;
+        height:130px;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .product-box{
+      h2{}
+      .wrapper{
+        .banner-left{
+        }
+    
+        .list-box{
+          .list{
+            .list-item{
+              span{}
+              .list-item-img{
+                img{}
+              }
+              .list-item-info{
+                h3{}
+                p{}
+              }
+            }
+          }
+        }
+      }
+}
   }
 }
 </style>

@@ -92,8 +92,8 @@
             </div>
 
             <div class="list-box">
-              <div class="list">
-                <div class="list-item"><!-- 单个产品块 -->
+              <div class="list" v-for = "(arr, i) in phoneList" :key = "i">
+                <div class="list-item" v-for = "(item ,j) in arr" :key = "j"><!-- 单个产品块 -->
                   <span>新品</span>
                   <div class="list-item-img">
                     <img src="" alt="">
@@ -161,7 +161,7 @@ export default {
   },
   data () {
     return {
-      swiperOptions:{
+      swiperOptions:{//swiper控制对象
         // 自动播放
         autoplay: {
           delay: 2500,//1秒切换一次
@@ -185,7 +185,7 @@ export default {
       },
       // 其实slideList的数据应该从后端接口动态索取，这里自己手动写死
       // 这里前三张是设置了id可以跳转的，后面的不能跳转
-      slideList:[
+      slideList:[//轮播图滑动图片信息
         {
           id:"42",
           img:"/imgs/slider/slide-1.jpg"
@@ -237,7 +237,7 @@ export default {
         [0,0,0,0],
       ],
 
-      adsList:[
+      adsList:[//广告区图片信息
         {
           id:33,
           img:"/imgs/ads/ads-1.png"
@@ -251,6 +251,11 @@ export default {
           id:47,
           img:"/imgs/ads/ads-4.jpg"
         },
+      ],
+
+      phoneList:[
+        [1,1,1,1],
+        [1,1,1,1]
       ]
     }
   },

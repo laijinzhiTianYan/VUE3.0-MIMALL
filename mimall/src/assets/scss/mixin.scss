@@ -6,10 +6,29 @@
 }
 // width: $w 这种写法使用时记得加单位
 // $size比较特殊些，取值比较复杂，所以用的时候记得带单位
+//行内图片的格式设置
 @mixin bgImg ($w:0,$h:0,$url:"",$size:contain){
     display: inline-block;
     width: $w+px;
     height: $h+px;
     background: url($url) no-repeat center;
     background-size: $size;
+}
+//绝对定位图片的设置,右上为主
+@mixin positionImg ($pos:absolute,$top:0,$right:0,$w:0,$h:0,$url:"",$size:contain){
+    position: $pos;//因为上面那种设置display和position是冲突的，虽然可以叠加同时使用，但不同的图片排布分开比较好
+    top: $top;
+    right: $right;
+    width: $w+px;
+    height: $h+px;
+    background: url($url) no-repeat center;
+    background-size: $size;
+}
+//以上左为定位
+@mixin positionTL ($pos:absolute,$top:0,$left:0,$w:100%,$h:100%) {
+    position: $pos;
+    top: $top;
+    left: $left;
+    width: $w;
+    height: $h;
 }

@@ -54,9 +54,10 @@ export default {
 };
 </script>
 
-<style lang="scss">//如果没有lang="scss"这个可能识别不了文件导致报错
+<style lang="scss">//如果没有lang="scss"这个可能识别不了文件导致报错,这里放的是全局样式
 @import "./assets/scss/reset.scss";
+@import "./assets/scss/config.scss";
 @import "./assets/scss/mixin.scss";//一定要注意这个顺序，如果后面的module用了前面的东西，一定要放好前后位置，不然报错
-// @import "./assets/scss/modal.scss";
+@import "./assets/scss/button.scss";//这个文件里需要一些变量因此一定要引入config.scss不然报错，无法编译
 
 </style>

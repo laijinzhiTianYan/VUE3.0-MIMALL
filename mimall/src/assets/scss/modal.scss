@@ -7,38 +7,38 @@
         @include positionTL (fixed);
         background-color: $colorI;
         opacity: .5;
-        .modal-dialog {
-            @include positionTL (absolute,40%,50%,660px,auto);//为了美观不要设置太中间可，可以适当放高一些
+    }
+    .modal-dialog {
+        @include positionTL (absolute,40%,50%,660px,auto);//为了美观不要设置太中间可，可以适当放高一些
+        background-color: $colorG;
+        transform: translate(-50%,-50%);//利用变换，实现居中
+        .modal-dialog-header {
+            height: 60px;
             background-color: $colorG;
-            transform: translate(-50%,-50%);//利用变换，实现居中
-            .modal-dialog-header {
-                height: 60px;
-                background-color: $colorG;
-                span {
-                    padding: 0 25px;
-                    line-height: 60px;
-                    font-size: $fontI;
-                }
-                .icon-close{//positionImg ($pos:absolute,$top:0,$right:0,$w:0,$h:0,$url:"",$size:contain)
-                    @include positionImg(absolute,23px,25px,16,16,"/imgs/icon-close.png");
-                    transition: transform .3s;
-                    &:hover{
-                        transform: scale(1.5);
-                    }
+            span {
+                padding: 0 25px;
+                line-height: 60px;
+                font-size: $fontI;
+            }
+            .icon-close{//positionImg ($pos:absolute,$top:0,$right:0,$w:0,$h:0,$url:"",$size:contain)
+                @include positionImg(absolute,23px,25px,16,16,"/imgs/icon-close.png");
+                transition: transform .3s;
+                &:hover{
+                    transform: scale(1.5);
                 }
             }
+        }
 // body插槽
-            .modal-dialog-body {
-                padding: 42px 40px 54px;
-                font-size: 14px;
-            }
+        .modal-dialog-body {
+            padding: 42px 40px 54px;
+            font-size: 14px;
+        }
 // 两个a标签分别控制确定及取消
-            .modal-dialog-footer {
-                height: 82px;
-                line-height: 82px;
-                text-align: center;
-                background-color: $colorG;
-            }
+        .modal-dialog-footer {
+            height: 82px;
+            line-height: 82px;
+            text-align: center;
+            background-color: $colorG;
         }
     }
 }

@@ -54,7 +54,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss">//如果没有lang="scss"这个可能识别不了文件导致报错
 @import "./assets/scss/reset.scss";
-@import "./assets/scss/modal.scss";
+@import "./assets/scss/mixin.scss";//一定要注意这个顺序，如果后面的module用了前面的东西，一定要放好前后位置，不然报错
+// @import "./assets/scss/modal.scss";
+
 </style>

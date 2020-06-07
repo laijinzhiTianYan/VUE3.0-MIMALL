@@ -3,13 +3,39 @@
 .modal {
     @include positionTL (fixed);//保持在视口固定，而且要作为子元素的锚点
     z-index: 6;
-    &.slide-enter, &.slide-leave-to{
-        top: -100%;
-    }
-    &.slide-enter-active,&.slide-leave-active{
+    
+    &.slide-enter-active{
         transition: all .3s ease;
     }
+    &.slide-leave-active{
+        transition: all .3s ease;
+    }
+    &.slide-enter-to{
+        top: 0;
+    }
+    &.slide-leave{
+        top: 0;
+    }
+    &.slide-enter{
+        top: -100%;
+    }
+    &.slide-leave-to{
+        top: -100%;
+    }
     
+    // 注意这个.v-enter等初始状态一定要放在.v-enter-active类的后面
+    // &.slide-enter-active{
+    //     top: 0;
+    // }
+    // &.slide-leave-active{
+    //     top: -100%;
+    // }
+    // &.slide-enter{
+    //     top:-100%;
+    // }
+    // &.slide-leave-to{
+    //     top:-100%;
+    // }
     .mask {
         @include positionTL (fixed);
         background-color: $colorI;

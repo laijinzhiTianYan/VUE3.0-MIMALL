@@ -9,25 +9,12 @@
           <a href="javascript:">协议规则</a>
         </div>
         <div class="topbar-user">
-
-          <a
-            href="javascript:"
-            v-if="username"
-          >{{username}}</a>
-          <a
-            href="javascript:"
-            v-if="!username"
-            @click="login"
-          >登陆</a>
-          <a
-            href="javascript:"
-            v-if="username"
-          >我的订单</a>
-          <a
-            href="javascript:"
-            class="my-cart"
-            @click="goToCart"
-          ><span class="icon-cart"></span>购物车</a>
+          <a href="javascript:" v-if="username">{{ username }}</a>
+          <a href="javascript:" v-if="!username" @click="login">登陆</a>
+          <a href="javascript:" v-if="username">我的订单</a>
+          <a href="javascript:" class="my-cart" @click="goToCart"
+            ><span class="icon-cart"></span>购物车</a
+          >
         </div>
       </div>
     </div>
@@ -49,20 +36,14 @@
                 >
                   <!-- 注意这里“”中变量和字符串拼接的写法 -->
                   <!-- 要和router中的路径对上 -->
-                  <a
-                    :href="'/#/product/'+item.id"
-                    target="_blank"
-                  >
+                  <a :href="'/#/product/' + item.id" target="_blank">
                     <div class="pro-img">
-                      <img
-                        :src="item.mainImage"
-                        :alt="item.name"
-                      >
+                      <img :src="item.mainImage" :alt="item.name" />
                     </div>
-                    <div class="pro-name">{{item.name}}</div>
+                    <div class="pro-name">{{ item.name }}</div>
                     <!-- 数据过滤器的使用 -->
                     <!-- 函数没有参数就可以简写，如currency()写成currency -->
-                    <div class="pro-price">{{item.price | currency()}}</div>
+                    <div class="pro-price">{{ item.price | currency() }}</div>
                   </a>
                 </li>
               </ul>
@@ -75,90 +56,72 @@
             <div class="children">
               <ul>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
                         alt="手机图片"
-                      >
+                      />
                     </div>
                     <div class="pro-name">小米手机</div>
                     <div class="pro-price">价格吓死你哦</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
                         alt="手机图片"
-                      >
+                      />
                     </div>
                     <div class="pro-name">小米手机</div>
                     <div class="pro-price">价格吓死你哦</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
                         alt="手机图片"
-                      >
+                      />
                     </div>
                     <div class="pro-name">小米手机</div>
                     <div class="pro-price">价格吓死你哦</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
                         alt="手机图片"
-                      >
+                      />
                     </div>
                     <div class="pro-name">小米手机</div>
                     <div class="pro-price">价格吓死你哦</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
                         alt="手机图片"
-                      >
+                      />
                     </div>
                     <div class="pro-name">小米手机</div>
                     <div class="pro-price">价格吓死你哦</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
                         alt="手机图片"
-                      >
+                      />
                     </div>
                     <div class="pro-name">小米手机</div>
                     <div class="pro-price">价格吓死你哦</div>
@@ -174,90 +137,54 @@
             <div class="children">
               <ul>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
-                      <img
-                        src="/imgs/nav-img/nav-3-1.webp"
-                        alt="手机图片"
-                      >
+                      <img src="/imgs/nav-img/nav-3-1.webp" alt="手机图片" />
                     </div>
                     <div class="pro-name">Redmi 智能电视 MAX 98"</div>
                     <div class="pro-price">19999</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
-                      <img
-                        src="/imgs/nav-img/nav-3-2.jpg"
-                        alt="手机图片"
-                      >
+                      <img src="/imgs/nav-img/nav-3-2.jpg" alt="手机图片" />
                     </div>
                     <div class="pro-name">小米全面屏电视 55英寸</div>
                     <div class="pro-price">1799元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
-                      <img
-                        src="/imgs/nav-img/nav-3-3.png"
-                        alt="手机图片"
-                      >
+                      <img src="/imgs/nav-img/nav-3-3.png" alt="手机图片" />
                     </div>
                     <div class="pro-name">小米电视4A 32英寸</div>
                     <div class="pro-price">699元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
-                      <img
-                        src="/imgs/nav-img/nav-3-4.jpg"
-                        alt="手机图片"
-                      >
+                      <img src="/imgs/nav-img/nav-3-4.jpg" alt="手机图片" />
                     </div>
                     <div class="pro-name">小米电视4A 55英寸</div>
                     <div class="pro-price">1799元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
-                      <img
-                        src="/imgs/nav-img/nav-3-5.webp"
-                        alt="手机图片"
-                      >
+                      <img src="/imgs/nav-img/nav-3-5.webp" alt="手机图片" />
                     </div>
                     <div class="pro-name">Redmi 红米电视 70英寸</div>
                     <div class="pro-price">3099元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a
-                    href="javascript:"
-                    target="_blank"
-                  >
+                  <a href="javascript:" target="_blank">
                     <div class="pro-img">
-                      <img
-                        src="/imgs/nav-img/nav-3-6.png"
-                        alt="手机图片"
-                      >
+                      <img src="/imgs/nav-img/nav-3-6.png" alt="手机图片" />
                     </div>
                     <div class="pro-name">小米壁画电视 65英寸</div>
                     <div class="pro-price">6999元</div>
@@ -269,10 +196,7 @@
         </div>
         <div class="header-search">
           <div class="wapper">
-            <input
-              type="text"
-              name="keyword"
-            >
+            <input type="text" name="keyword" />
             <a href="javascript:"></a>
           </div>
         </div>

@@ -1,12 +1,12 @@
 // 产品页面
 <template>
-    <div>
-product
-    </div>
+  <div>
+    product
+  </div>
 </template>
 
 <script>
 export default {
-    name:'product'
-}
+  name: "product"
+};
 </script>

@@ -1,12 +1,12 @@
 // 订单列表
 <template>
-    <div>
-order-list
-    </div>
+  <div>
+    order-list
+  </div>
 </template>
 
 <script>
 export default {
-    name:'order-list'
-}
+  name: "order-list"
+};
 </script>

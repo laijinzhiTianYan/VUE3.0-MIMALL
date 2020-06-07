@@ -9,7 +9,7 @@ import App from "./App.vue";
 // import env from "./env";
 // mock开关
 const mock = false;
-if(mock){
+if (mock) {
   // import是预编译加载，在编译的时候加载好了，而require是按序运行到，才加载
   require("./mock/api");
 }

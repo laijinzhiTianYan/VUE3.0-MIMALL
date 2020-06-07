@@ -11,11 +11,11 @@
       <a href="https://home.miui.com/" target="_blank">MIUI</a>
       <a href="https://home.mi.com/index.html" target="_blank">米家</a>
       <a href="http://www.miliao.com/" target="_blank">米聊</a>
-
     </div>
-    <div class="copyright">Copyright © 2019 <span>mi.futurefe.com </span>All Rights Reserved</div>
+    <div class="copyright">
+      Copyright © 2019 <span>mi.futurefe.com </span>All Rights Reserved
+    </div>
   </div>
-  
 </template>
 
 <script>
@@ -31,41 +31,41 @@ export default {
   position: relative;
   background-color: $colorB;
   color: $colorD;
-  border-top: 4px solid #F60; 
+  border-top: 4px solid #f60;
   height: 234px;
   line-height: 16px;
   font-size: 16px;
-// text-align属性对图片也有效，即父元素设置了，对子元素起作用
-// 也可以用flex布局来做，但代码会臃肿
+  // text-align属性对图片也有效，即父元素设置了，对子元素起作用
+  // 也可以用flex布局来做，但代码会臃肿
   text-align: center;
 
   .footer-logo {
     img {
-      margin-top:46px;
+      margin-top: 46px;
       margin-bottom: 13px;
       width: 53px;
       height: 36px;
     }
   }
-   .footer-link{
-     margin-top: 31px;
-        a{
-            // a标签的字体颜色要单个做，因为它优先级比价高
-            color: #999;
-            display: inline-block;
-            &::after{
-                content: "丨";
-            }
-            &:last-child::after{
-                display: none;
-            }
-        }
+  .footer-link {
+    margin-top: 31px;
+    a {
+      // a标签的字体颜色要单个做，因为它优先级比价高
+      color: #999;
+      display: inline-block;
+      &::after {
+        content: "丨";
+      }
+      &:last-child::after {
+        display: none;
+      }
     }
-    .copyright{
-        margin-top: 14px;
-        span{
-            color: #F60;
-        }
+  }
+  .copyright {
+    margin-top: 14px;
+    span {
+      color: #f60;
     }
+  }
 }
 </style>

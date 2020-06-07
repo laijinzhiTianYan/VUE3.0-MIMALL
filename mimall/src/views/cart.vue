@@ -1,19 +1,19 @@
 <template>
-    <div>
+  <div>
     <oder-header></oder-header>
     cart
     <NavFooter></NavFooter>
-    </div>
+  </div>
 </template>
 
 <script>
 import OderHeader from "../components/OderHeader";
 import NavFooter from "../components/NavFooter";
 export default {
-    name:'cart',
-    components: {
-        OderHeader,
-        NavFooter
-    }
-}
+  name: "cart",
+  components: {
+    OderHeader,
+    NavFooter
+  }
+};
 </script>

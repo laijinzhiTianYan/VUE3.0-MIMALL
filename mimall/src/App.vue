@@ -19,45 +19,40 @@ export default {
     // 不然的话每个利用axios的模块都要先引入才能使用
     // 注意mock时，路径中不能带public，即"../public/mock/...."
     // 因为public已经是顶级目录了就不要带了，带了反而会报错
-
     // 这种是加载本地mock静态文件的方式，
     // 文件设置在顶层public/mock/user中
     // 需要把main中的axios.defaults.baseURL 注释掉
     //  this.axios.get("/mock/user/login.json").then((res) => {
     //    this.res = res;
     //  });
-
     //这种是通过easy-mock平台实现mock
     // 需要把main中的axios.defaults.baseURL换成easy-mock中生成的Base-URL
     // 也要注释掉env模块
     // this.axios.get("/mock").then((res) => {
     // this.res = res;
     // });
-
     // 这种是利用mockjs拦截请求实现mock模拟的方式
     // 不需要任何更改，只需打开main中的mock开关即可
     // 文件设置在src下的mock文件夹中
     // 这种mock方式是读取不到xhr请求的，因为它的本质就是拦截ajax请求，代入模拟的数据
-      // this.axios.get("/user/login").then((res) => {
-      // this.res = res;
-      // console.log(res);
-      // });
-
-
+    // this.axios.get("/user/login").then((res) => {
+    // this.res = res;
+    // console.log(res);
+    // });
     // storage的使用
     // storage.setItem("a",1);  设置第一层级
     // storage.setItem('user',{'a':1});  这个是覆盖整体式输入值
     // storage.setItem("abc",{"a":2},"user");   这个针对某个模块输入值
     // storage.clear("a");  清除第一层级
-    // storage.clear('a','user');  这个是清除某个模块中的值 
+    // storage.clear('a','user');  这个是清除某个模块中的值
   }
 };
 </script>
 
-<style lang="scss">//如果没有lang="scss"这个可能识别不了文件导致报错,这里放的是全局样式
+<style lang="scss">
+//如果没有lang="scss"这个可能识别不了文件导致报错,这里放的是全局样式
 @import "./assets/scss/reset.scss";
 @import "./assets/scss/config.scss";
-@import "./assets/scss/mixin.scss";//一定要注意这个顺序，如果后面的module用了前面的东西，一定要放好前后位置，不然报错
-@import "./assets/scss/button.scss";//这个文件里需要一些变量因此一定要引入config.scss不然报错，无法编译
-
+@import "./assets/scss/mixin.scss"; //一定要注意这个顺序，如果后面的module用了前面的东西，一定要放好前后位置，不然报错
+@import "./assets/scss/button.scss"; //这个文件里需要一些变量因此一定要引入config.scss不然报错，无法编译
 </style>

@@ -24,6 +24,6 @@ switch (process.env.NODE_ENV) {
     console.log("default status");
     break;
 }
-export default{
-    baseURL
-}
+export default {
+  baseURL
+};

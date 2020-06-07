@@ -1,11 +1,11 @@
 <template>
-    <div>
-oder-header
-    </div>
+  <div>
+    oder-header
+  </div>
 </template>
 
 <script>
 export default {
-    name:'oder-header'
-}
+  name: "oder-header"
+};
 </script>

@@ -1,12 +1,12 @@
 // 产品详情
 <template>
-    <div>
-detail
-    </div>
+  <div>
+    detail
+  </div>
 </template>
 
 <script>
 export default {
-    name:'detail'
-}
+  name: "detail"
+};
 </script>

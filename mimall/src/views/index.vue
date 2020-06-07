@@ -3,34 +3,25 @@
     这是index.vue的视图层
     <!-- 这里就是首页的全部内容 -->
     <div class="index">
-
       <div class="container">
-
         <!-- 轮播区 -->
         <div class="swiper-box">
-
           <!-- 左侧菜单区 -->
           <div class="nav-menu">
             <ul class="menu-wrap">
               <li class="menu-item">
                 <a href="javascript:">手机 电话卡</a>
                 <div class="children">
-                  <ul
-                    v-for="(item, index) in menuList"
-                    :key="index"
-                  >
+                  <ul v-for="(item, index) in menuList" :key="index">
                     <!-- 循环6次 -->
-                    <li
-                      v-for="(sub,id) in item"
-                      :key="id"
-                    >
+                    <li v-for="(sub, id) in item" :key="id">
                       <!-- 内循环4次，迭代内部对象，给没有数据的留退路 -->
-                      <a :href=" sub ? '/#/product/' + sub.id : '#' ">
+                      <a :href="sub ? '/#/product/' + sub.id : '#'">
                         <img
-                          :src="sub['img'] || '/imgs/item-box-1.png' "
+                          :src="sub['img'] || '/imgs/item-box-1.png'"
                           alt="sub[name]"
-                        >
-                        {{sub.name || "待插入" }}
+                        />
+                        {{ sub.name || "待插入" }}
                       </a>
                     </li>
                   </ul>
@@ -69,25 +60,15 @@
           </div>
 
           <!-- 轮播图片区 -->
-          <swiper
-            ref="indexSwiper"
-            :options="swiperOptions"
-          >
-            <swiper-slide
-              v-for="(item, index) in slideList"
-              :key="index"
-            >
+          <swiper ref="indexSwiper" :options="swiperOptions">
+            <swiper-slide v-for="(item, index) in slideList" :key="index">
               <!-- 一定要注意用到指令的话，href里一定要用‘’括起来 -->
-              <a :href="'/#/product/'+item.id"><img
-                  :src="item.img"
-                  alt="'picture'+item.id"
-                ></a>
+              <a :href="'/#/product/' + item.id"
+                ><img :src="item.img" alt="'picture'+item.id"
+              /></a>
             </swiper-slide>
             <!-- 这块应该就是控制器吧，试一下 -->
-            <div
-              class="swiper-pagination"
-              slot="pagination"
-            ></div>
+            <div class="swiper-pagination" slot="pagination"></div>
             <div class="swiper-button-prev"></div>
             <!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
             <div class="swiper-button-next"></div>
@@ -100,21 +81,17 @@
           <a
             v-for="(item, index) in adsList"
             :key="index"
-            :href="'/#/product/' + item.id "
-          ><img
-              :src="item.img"
-              alt="item.id"
-            ></a>
+            :href="'/#/product/' + item.id"
+            ><img :src="item.img" alt="item.id"
+          /></a>
         </div>
 
         <!-- 大的banner -->
         <div class="banner">
-          <a href="/#/product/30"><img
-              src="/imgs/banner-1.png"
-              alt="banner-img"
-            ></a>
+          <a href="/#/product/30"
+            ><img src="/imgs/banner-1.png" alt="banner-img"
+          /></a>
         </div>
-
       </div>
 
       <!-- 产品缩略区 -->
@@ -123,49 +100,39 @@
           <h2>手机</h2>
           <div class="wrapper">
             <div class="banner-left">
-              <img
-                src="/imgs/mix-alpha.jpg"
-                alt=""
-              >
+              <img src="/imgs/mix-alpha.jpg" alt="" />
             </div>
 
             <div class="list-box">
-              <div
-                class="list"
-                v-for="(arr, i) in phoneList"
-                :key="i"
-              >
-                <div
-                  class="list-item"
-                  v-for="(item ,j) in arr"
-                  :key="j"
-                >
+              <div class="list" v-for="(arr, i) in phoneList" :key="i">
+                <div class="list-item" v-for="(item, j) in arr" :key="j">
                   <!-- 单个产品块 -->
                   <!-- <span :class="{'new-pro' : j % 2 === 0}">新品</span>这是设置单一类的方法 -->
-                  <span :class="[ j % 2 === 0 ? 'new-pro' : 'kill-pro' ]">新品</span>
+                  <span :class="[j % 2 === 0 ? 'new-pro' : 'kill-pro']"
+                    >新品</span
+                  >
                   <div class="list-item-img">
-                    <img
-                      :src="item.mainImage"
-                      alt=""
-                    >
+                    <img :src="item.mainImage" alt="" />
                   </div>
                   <div class="list-item-info">
-                    <h3>{{item.name}}</h3>
-                    <p class="list-item-describe">{{item.subTitle}}</p>
-                    <p class="list-item-price">￥{{item.price}}<a
+                    <h3>{{ item.name }}</h3>
+                    <p class="list-item-describe">{{ item.subTitle }}</p>
+                    <p class="list-item-price">
+                      ￥{{ item.price
+                      }}<a
                         href=""
                         class="list-item-cart"
-                      ></a></p><!-- 其实这里要用过滤器格式化传入值的 -->
-
+                        @click="addCart(item.id)"
+                      ></a>
+                    </p>
+                    <!-- 其实这里要用过滤器格式化传入值的，addCart（）这里调用方法要看后台接口交互时需要哪些参数-->
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
     <service-bar></service-bar>
     <modal
@@ -173,15 +140,15 @@
       sureText="查看购物车"
       btnType="1"
       modalType="middle"
-      :showModal="true"
-    ><!-- 使用插件时传入插件的参数 -->
+      :showModal="showModal"
+      ><!-- 使用插件时传入插件的参数 -->
 
-      <template v-slot:body><!-- 新的slot语法，借助v-slot定义插入的位置 -->
+      <template v-slot:body
+        ><!-- 新的slot语法，借助v-slot定义插入的位置 -->
         <p>商品添加成功！</p>
       </template>
     </modal>
   </div>
-
 </template>
 
 <script>
@@ -191,7 +158,7 @@
 import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
 import ServiceBar from "../components/ServiceBar";
-import Modal from "../components/Modal";//引入以后一定要在下面components中调用
+import Modal from "../components/Modal"; //引入以后一定要在下面components中调用
 export default {
   name: "index",
   components: {
@@ -309,7 +276,9 @@ export default {
 
       phoneList: [
         //手机产品区的二维数组，其实也需要用对象来做一些数据引入
-      ]
+      ],
+
+      showModal: false
     };
   },
   mounted() {
@@ -323,6 +292,7 @@ export default {
   },
   methods: {
     init() {
+      //初始化数据，在mounted中激活
       this.axios
         .get("/products", {
           params: {
@@ -339,6 +309,19 @@ export default {
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
         });
     }
+    // 弹框部分
+    // addCart(id) {
+    //   this.axios
+    //     .post("/carts", {
+    //       productId: id,
+    //       selected: true
+    //     })
+    //     .then(res => {})
+    //     .catch(() => {
+    //       this.showModal = true;
+    //     });
+    //   // this.showModal = this.showModal === false ? true : false;
+    // }
   }
 };
 </script>

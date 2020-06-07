@@ -122,7 +122,7 @@
                       }}<a
                         href=""
                         class="list-item-cart"
-                        @click="addCart(item.id)"
+                        @click="addCart()"
                       ></a>
                     </p>
                     <!-- 其实这里要用过滤器格式化传入值的，addCart（）这里调用方法要看后台接口交互时需要哪些参数-->
@@ -136,16 +136,19 @@
     </div>
     <service-bar></service-bar>
     <modal
-      title="提示"
-      sureText="查看购物车"
-      btnType="1"
-      modalType="middle"
-      :showModal="showModal"
+      title = "提示"
+      sureText = "查看购物车"
+      btnType = "3"
+      modalType = "middle"
+      :showModal = "showModal"
+      @submit = "goToCart()"
+      @cancelAdd = "showModal=false"
       ><!-- 使用插件时传入插件的参数 -->
+      <!-- 事件后面的语句可以直接执行 -->
 
       <template v-slot:body
         ><!-- 新的slot语法，借助v-slot定义插入的位置 -->
-        <p>商品添加成功！</p>
+        <p>添加产品到购物车吗？？？</p>
       </template>
     </modal>
   </div>
@@ -308,20 +311,23 @@ export default {
           this.list = res.list.slice(6, 14);
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
         });
+    },
+    addCart() {//这里要传参id
+      this.showModal = true;
+      // this.axios
+      //   .post("/carts", {
+      //     productId: id,
+      //     selected: true
+      //   })
+      //   .then(res => {})
+      //   .catch(() => {
+      //     this.showModal = true;
+      //   });
+      // this.showModal = this.showModal === false ? true : false;
+    },
+    goToCart(){
+      this.$router.push("/cart");// this.$router别写成this.router
     }
-    // 弹框部分
-    // addCart(id) {
-    //   this.axios
-    //     .post("/carts", {
-    //       productId: id,
-    //       selected: true
-    //     })
-    //     .then(res => {})
-    //     .catch(() => {
-    //       this.showModal = true;
-    //     });
-    //   // this.showModal = this.showModal === false ? true : false;
-    // }
   }
 };
 </script>

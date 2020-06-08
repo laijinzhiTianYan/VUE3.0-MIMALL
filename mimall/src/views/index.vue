@@ -82,15 +82,24 @@
             v-for="(item, index) in adsList"
             :key="index"
             :href="'/#/product/' + item.id"
-            ><img :src="item.img" alt="item.id"
-          /></a>
+            ><img v-lazy="item.img" alt="item.id"
+          />
+          <!-- <img :src="item.img" alt="item.id"/>
+          最开始为了避免多张图片同时加载，先不填src，借用data-src=""来实现懒加载，
+          一般的加载时直接绑定:src,现在借用vue-lazyload插件，它自动会封装图片 -->
+          </a>
         </div>
 
         <!-- 大的banner -->
         <div class="banner">
           <a href="/#/product/30"
-            ><img src="/imgs/banner-1.png" alt="banner-img"
-          /></a>
+            ><img v-lazy="'/imgs/banner-1.png'" alt="banner-img"
+          />
+          <!-- <img :src="item.img" alt="item.id"/>
+          <img src="/imgs/banner-1.png" alt="banner-img"/>
+          注意一点，上面第一种是带着迭代item变量的加载，而后面一种是字符串连接，
+          所以如果用懒加载或者其他指令时，一定要把字符串再用''隔离开来，避免报错 -->
+          </a>
         </div>
       </div>
 
@@ -120,10 +129,11 @@
                     <p class="list-item-price">
                       ￥{{ item.price
                       }}<a
-                        href=""
+                        href="javascrit:;"
                         class="list-item-cart"
                         @click="addCart()"
                       ></a>
+                      <!-- 一定要注意a标签本省会跳转的，设置了样式如果不考虑那点就会出现闪烁刷新的情况 -->
                     </p>
                     <!-- 其实这里要用过滤器格式化传入值的，addCart（）这里调用方法要看后台接口交互时需要哪些参数-->
                   </div>

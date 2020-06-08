@@ -4,6 +4,7 @@ import store from "./store";
 import axios from "axios";
 // 虽然引入了axios但是以后只要用，那每个组件都要再引一下，所以要借助vue-axios
 import VueAxios from "vue-axios";
+import VueLazyload from 'vue-lazyload'; // 用于实现图片懒加载
 // 插件在上，组件在下，养成好习惯
 import App from "./App.vue";
 // import env from "./env";
@@ -25,7 +26,7 @@ axios.defaults.timeout = 8000;
 // interceptors是axios对请求request和响应response的值做拦截处理的机制
 // 在这里只做针对错误响应的一个拦截，
 // 对请求的拦截更多是用在后台管理系统中，对请求进行筛选和处理
-axios.interceptors.response.use(function(response) {
+axios.interceptors.response.use(function (response) {
   let res = response.data;
   // 这里头的status都是要和后端商量好的，哪个码代表成功
   // 哪个码代表失败，哪个代表有货，哪个代表缺货，都是按需更改的
@@ -40,6 +41,11 @@ axios.interceptors.response.use(function(response) {
 // productionTip是生产环境的提示
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+Vue.use(VueLazyload, {
+  error: '/imgs/loading-svg/loading-balls.svg',
+  loading: '/imgs/loading-svg/loading-bubbles.svg' //loading加载svg动画
+}); //用懒加载一定要注意带变量的和不带变量的两种链接的写法，如果是字符串一定要用"‘’"这种结构引入图片，不然报错
+
 new Vue({
   // 注意这里key和值相同可以缩写不然比如上面引入是用的routers那么这里用router：routers
   router,

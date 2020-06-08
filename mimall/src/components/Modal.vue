@@ -9,19 +9,19 @@
       <div class="modal-dialog">
         <div class="modal-dialog-header">
           <span>{{title}}</span>
-          <a href="javascript:;" class="icon-close" @click="$emit('cancel')"></a>
+          <a href="javascript:;" class="icon-close" @click="$emit('cancelAdd')"></a>
         </div>
         <div class="modal-dialog-body">
           <slot name="body"></slot>
         </div>
         <div class="modal-dialog-footer">
           <!-- 对一个组件中css样式有两种方式实现，一种是在本组件中引入，另一种是挂载在全局App.vue中引入，比如这里的btn -->
-          <a href="javascript:;" class="btn" v-if="btnType === '1'" @click="$emit('submit')">确定</a><!-- 注意这里的btnType类型是string -->
-          <a href="javascript:;" class="btn" v-if="btnType === '2'" @click="$emit('cancel')">确定</a>
+          <a href="javascript:;" class="btn" v-if="btnType === '1'" @click="$emit('submit')">{{sureText}}</a><!-- 注意这里的btnType类型是string -->
+          <a href="javascript:;" class="btn" v-else-if="btnType === '2'" @click="$emit('cancelAdd')">{{cancelText}}</a>
           <!-- v-if判断渲染，$emit("Strings自定义事件向父组件传递讯息") -->
-          <div class="btn-grup" v-if="btnType === '3'">
-            <a href="javascript:;" class="btn"  @click="$emit('submit')">确定</a>
-            <a href="javascript:;" class="btn" @click="$emit('cancelAdd')">取消</a>
+          <div class="btn-grup" v-else-if="btnType === '3'">
+            <a href="javascript:;" class="btn"  @click="$emit('submit')">{{sureText}}</a>
+            <a href="javascript:;" class="btn" @click="$emit('cancelAdd')">{{cancelText}}</a>
           </div>
         </div>
       </div>

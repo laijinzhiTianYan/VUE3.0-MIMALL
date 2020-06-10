@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/home.vue";
 import Index from "../views/index.vue";
+import Login from "../views/login.vue";
 import Product from "../views/product.vue";
 import Detail from "../views/detail.vue";
 import Cart from "../views/cart.vue";
@@ -46,6 +47,12 @@ const routes = [
   //   component: () =>
   //     import(/* webpackChunkName: "about" */ "../views/About.vue")
   // }
+  {
+    path: "/login",
+    name: "login",
+    component: Login
+
+  },
   {
     path: "/cart",
     name: "cart",

@@ -37,12 +37,14 @@
             <input
               type="text"
               placeholder="邮箱/手机号码/小米ID"
+              v-model="username"
             >
             <input
               type="password"
               placeholder="密码"
+              v-model="password"
             >
-            <button>登陆</button>
+            <button @click="login">登陆</button>
           </div>
 
           <div class="login-body-form-tips">
@@ -59,7 +61,29 @@
 
 <script>
 export default {
-  name: "login"
+  name: "login",
+  data () {
+    return {
+      username:"",
+      password:"",
+      userId:"",
+      res:{}
+      // 这里的用户id用来cookie联络前后端辨识用户信息
+    }
+  },
+  methods: {
+    login(){
+      let {username,password} = this;
+      this.axios.post('/user/login',{
+        username,
+        password
+      }).then((res) => {
+        this.res = res;
+        this.$router.push("/index");
+      })
+      // 其实在main.js中已经做了错误拦截，所以这里可以不写.catch()
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -96,21 +120,17 @@ export default {
       text-align: center;
       .login-body-form-title {
         outline: dashed .1px blue;
+        @include flex(center,center);
         margin-top: 40px;
         margin-bottom: 49px;
         font-size: 23px;
         line-height: 23px;
         ul {
-          outline: dashed .1px brown;
+          outline: solid .1px brown;
           @include flex(space-around,center);
-          display: inline-block;
           width: 348px;
           li {
             outline: dashed .1px green;
-            display: inline-block;
-            // box-sizing: border-box;
-            // padding-left: 30px;
-            // padding-right: 30px;
           }
         }
       }
@@ -119,7 +139,7 @@ export default {
         width: 348px;
         height: 50px;
         margin-bottom: 20px;
-        text-indent: 28px;
+        text-indent: 23px;
       }
       button {
         width: 348px;

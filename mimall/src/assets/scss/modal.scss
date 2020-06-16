@@ -1,4 +1,4 @@
-// 通用样式，在app.vue中引入
+// 通用样式，在app.vue中引入,弹窗组件
 //@mixin positionTL ($pos,$top,$left,$w,$h) 
 .modal {
     @include positionTL (fixed);//保持在视口固定，而且要作为子元素的锚点

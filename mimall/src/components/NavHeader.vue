@@ -9,15 +9,37 @@
           <a href="javascript:">协议规则</a>
         </div>
         <div class="topbar-user">
-          <a href="javascript:" v-if="username">{{ username }}</a>
-          <a href="javascript:" v-if="!username" @click="login">登陆</a>
-          <a href="javascript:" v-if="username">我的订单</a>
-          <a href="javascript:" class="my-cart" @click="goToCart"
-            ><span class="icon-cart"></span>购物车</a
-          >
+          <a
+            href="javascript:"
+            v-if="username"
+          >{{ username }}</a>
+          <a
+            href="javascript:"
+            v-if="!username"
+            @click="login"
+          >登陆</a>
+          <a
+            href="javascript:"
+            v-if="!username"
+            @click="register"
+          >注册</a>
+          <a
+            href="javascript:"
+            v-if="username"
+          >我的订单</a>
+          <a
+            href="javascript:"
+            v-if="username"
+          >消息通知</a>
+          <a
+            href="javascript:"
+            class="my-cart"
+            @click="goToCart"
+          ><span class="icon-cart"></span>购物车</a>
         </div>
       </div>
     </div>
+
     <div class="nav-header">
       <div class="container">
         <div class="header-logo">
@@ -36,9 +58,15 @@
                 >
                   <!-- 注意这里“”中变量和字符串拼接的写法 -->
                   <!-- 要和router中的路径对上 -->
-                  <a :href="'/#/product/' + item.id" target="_blank">
+                  <a
+                    :href="'/#/product/' + item.id"
+                    target="_blank"
+                  >
                     <div class="pro-img">
-                      <img :src="item.mainImage" :alt="item.name" />
+                      <img
+                        :src="item.mainImage"
+                        :alt="item.name"
+                      />
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
                     <!-- 数据过滤器的使用 -->
@@ -56,7 +84,10 @@
             <div class="children">
               <ul>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
@@ -68,7 +99,10 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
@@ -80,7 +114,10 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
@@ -92,7 +129,10 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
@@ -104,7 +144,10 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
@@ -116,7 +159,10 @@
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
                       <img
                         src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png?thumb=1&w=160&h=110&f=webp&q=90"
@@ -137,54 +183,90 @@
             <div class="children">
               <ul>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-1.webp" alt="手机图片" />
+                      <img
+                        src="/imgs/nav-img/nav-3-1.webp"
+                        alt="手机图片"
+                      />
                     </div>
                     <div class="pro-name">Redmi 智能电视 MAX 98"</div>
                     <div class="pro-price">19999</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-2.jpg" alt="手机图片" />
+                      <img
+                        src="/imgs/nav-img/nav-3-2.jpg"
+                        alt="手机图片"
+                      />
                     </div>
                     <div class="pro-name">小米全面屏电视 55英寸</div>
                     <div class="pro-price">1799元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-3.png" alt="手机图片" />
+                      <img
+                        src="/imgs/nav-img/nav-3-3.png"
+                        alt="手机图片"
+                      />
                     </div>
                     <div class="pro-name">小米电视4A 32英寸</div>
                     <div class="pro-price">699元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-4.jpg" alt="手机图片" />
+                      <img
+                        src="/imgs/nav-img/nav-3-4.jpg"
+                        alt="手机图片"
+                      />
                     </div>
                     <div class="pro-name">小米电视4A 55英寸</div>
                     <div class="pro-price">1799元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-5.webp" alt="手机图片" />
+                      <img
+                        src="/imgs/nav-img/nav-3-5.webp"
+                        alt="手机图片"
+                      />
                     </div>
                     <div class="pro-name">Redmi 红米电视 70英寸</div>
                     <div class="pro-price">3099元</div>
                   </a>
                 </li>
                 <li class="product">
-                  <a href="javascript:" target="_blank">
+                  <a
+                    href="javascript:"
+                    target="_blank"
+                  >
                     <div class="pro-img">
-                      <img src="/imgs/nav-img/nav-3-6.png" alt="手机图片" />
+                      <img
+                        src="/imgs/nav-img/nav-3-6.png"
+                        alt="手机图片"
+                      />
                     </div>
                     <div class="pro-name">小米壁画电视 65英寸</div>
                     <div class="pro-price">6999元</div>
@@ -196,7 +278,10 @@
         </div>
         <div class="header-search">
           <div class="wapper">
-            <input type="text" name="keyword" />
+            <input
+              type="text"
+              name="keyword"
+            />
             <a href="javascript:"></a>
           </div>
         </div>
@@ -215,6 +300,8 @@ export default {
     };
   },
   mounted() {
+    //注意，虽然头部组件构建了登陆和购物车功能，但是拉去信息的部分还是放在课app.vue中，因为这里不确定是否是登陆的状态
+    // 干脆就放在app.vue中向服务器端拉取一次登陆信息，然后存储在vuex中来进行状态判断
     this.getProductList();
   },
   methods: {
@@ -236,7 +323,10 @@ export default {
         });
     },
     login() {
-      this.router.push("/login");
+      this.$router.push("/login");
+    },
+    register() {// 暂时先和登陆一样都引流到登录页面
+      this.$router.push("/login");
     },
     goToCart() {
       // 常见面试题，怎么跳转路由，用this.$router.push()
@@ -260,29 +350,37 @@ export default {
 @import "../assets/scss/base.scss";
 @import "../assets/scss/mixin.scss";
 @import "../assets/scss/config.scss";
+
 .header {
   .nav-topbar {
     height: 40px;
     line-height: 40px;
     background-color: #333333;
     color: #b0b0b0;
-    //  container实现flex的基础
     .container {
       @include flex();
-      //  虽然上面设置了color但是a标签依然需要覆盖一下
-      a {
-        display: inline-block;
-        color: #b0b0b0;
-        margin-right: 18px;
+      a {//  .topbar-menu 和.topbar-user中都有a标签，这里直接都提出来，虽然上面设置了color但是a标签依然需要覆盖一下
+          display: inline-block;
+          color: #b0b0b0;
+          margin-right: 18px;
+        }
+      .topbar-menu {
+        outline: dashed .2px red;
+        @include flex();
       }
-      .my-cart {
-        width: 110px;
-        text-align: center;
-        background-color: #ff6600;
-        color: #fff;
-        .icon-cart {
-          @include bgImg(16, 12, "/imgs/icon-cart-checked.png");
-          margin-right: 6px;
+
+      .topbar-user {
+        outline: dashed .2px red;
+        .my-cart {
+          width: 110px;
+          margin-right: 0;// 其实他是最后一个a标签，为了贴到右边把之前统一设置的右边距去掉
+          text-align: center;
+          background-color: #ff6600;
+          color: #fff;
+          .icon-cart {
+            @include bgImg(16, 12, "/imgs/icon-cart-checked.png");
+            margin-right: 6px;
+          }
         }
       }
     }

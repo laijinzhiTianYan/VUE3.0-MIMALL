@@ -14,6 +14,8 @@ export default {
     };
   },
   mounted() {
+    this.getUser();
+    this.getCartCount();
     // 这里可以直接使用this调用axios的原因是，
     // 在main.js中利用了vue-axios把axios挂载到了全局vue对象上，
     // 不然的话每个利用axios的模块都要先引入才能使用
@@ -45,6 +47,18 @@ export default {
     // storage.setItem("abc",{"a":2},"user");   这个针对某个模块输入值
     // storage.clear("a");  清除第一层级
     // storage.clear('a','user');  这个是清除某个模块中的值
+  },
+  methods: {
+    getUser(){
+      this.axios.get("/user").then(()=>{
+        //to-do 保存到vuex当中去
+      })
+    },
+    getCartCount(){
+      this.axios.get("/carts/products/sum").then(()=>{
+        //to-do 保存到vuex当中去
+      })
+    }
   }
 };
 </script>

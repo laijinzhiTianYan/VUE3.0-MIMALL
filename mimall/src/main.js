@@ -4,7 +4,8 @@ import store from "./store";
 import axios from "axios";
 // 虽然引入了axios但是以后只要用，那每个组件都要再引一下，所以要借助vue-axios
 import VueAxios from "vue-axios";
-import VueLazyload from 'vue-lazyload'; // 用于实现图片懒加载
+import VueLazyload from "vue-lazyload"; // 用于实现图片懒加载
+import VueCookie from "vue-cookie";//使用vue-cookie
 // 插件在上，组件在下，养成好习惯
 import App from "./App.vue";
 // import env from "./env";
@@ -30,17 +31,25 @@ axios.interceptors.response.use(function (response) {
   let res = response.data;
   // 这里头的status都是要和后端商量好的，哪个码代表成功
   // 哪个码代表失败，哪个代表有货，哪个代表缺货，都是按需更改的
+  // 非登录状态也是可以访问首页的，但是不能访问一些加密区，判断一下路径
+  // hash路径就是带#的，例如"#/index"
+  let path = location.hash;
   if (res.status === 0) {
     return res.data;
   } else if (res.status === 10) {
-    window.location.href = "/#/";
-  } else {
+    if(path !== "#/index"){//只要是非首页，都要跳转到注册页面
+      window.location.href = "/#/login";
+    }
+    
+  } else {//注意这里筛选的情况太少了，如果其他页面有不同的status码那么就会出现错误，比如登陆注册那有status为1的码
     alert(res.msg);
+    return Promise.reject(res);//这里就会自动拦截到错误并报错，不会执行其他的步骤
   }
 });
 // productionTip是生产环境的提示
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
+Vue.use(VueCookie);
 Vue.use(VueLazyload, {
   error: '/imgs/loading-svg/loading-balls.svg',
   loading: '/imgs/loading-svg/loading-bubbles.svg' //loading加载svg动画

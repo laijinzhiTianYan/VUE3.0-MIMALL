@@ -49,7 +49,7 @@
 
           <div class="login-body-form-tips">
             <div class="sms">手机短信登陆/注册</div>
-            <div class="reg">立即注册<span>丨</span>忘记密码？</div>
+            <div class="reg" @click="register">立即注册<span>丨</span>忘记密码？</div>
           </div>
         </div>
       </div>
@@ -74,14 +74,25 @@ export default {
   methods: {
     login(){
       let {username,password} = this;
-      this.axios.post('/user/login',{
+      this.axios.post("/user/login",{
         username,
         password
       }).then((res) => {
         this.res = res;
+        this.$cookie.set("userId",res.id,{expires:"1M"});
+        // to-do 保存用户名
         this.$router.push("/index");
       })
       // 其实在main.js中已经做了错误拦截，所以这里可以不写.catch()
+    },
+    register(){
+      this.axios.post(" /user/register",{
+        username:"mz1",
+        password:"mz1",
+        email:"mz1@163.com"
+      }).then(() => {
+        alert("注册成功");
+      })
     }
   }
 };
@@ -131,6 +142,7 @@ export default {
           width: 348px;
           li {
             outline: dashed .1px green;
+            cursor: pointer;
           }
         }
       }
@@ -148,6 +160,7 @@ export default {
         background-color: #FF6600;
         color: #fff;
         font-size: 16px;
+        cursor: pointer;
       }
     }
     .login-body-form-tips{
@@ -156,6 +169,12 @@ export default {
       width: 348px;
       margin-left: 31px;
       margin-top: 14px;
+      .sms{
+        cursor: pointer;
+      }
+      .reg{
+        cursor: pointer;
+      }
     }
     }
     

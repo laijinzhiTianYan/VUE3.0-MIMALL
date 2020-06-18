@@ -80,7 +80,11 @@ export default {
       }).then((res) => {
         this.res = res;
         this.$cookie.set("userId",res.id,{expires:"1M"});
-        // to-do 保存用户名
+        // 给vuex中保存数据的起点，利用dispatch分发到action中，
+        // 然后action分到mutation中，mutation控制state数据
+        // 在终点组件的date中，直接用$store.state.mz读取（如果读的比较多可以用快捷函数一次性结构出来）
+        // 比如只在终点组件中读取成功后，刷新数据还是会消失，要在app.vue中也要留存一下
+        this.$store.dispatch('savaUserName',res.username);
         this.$router.push("/index");
       })
       // 其实在main.js中已经做了错误拦截，所以这里可以不写.catch()

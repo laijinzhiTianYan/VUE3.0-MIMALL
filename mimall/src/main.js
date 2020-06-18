@@ -1,6 +1,6 @@
 import Vue from "vue";
 import router from "./router";
-import store from "./store";
+import store from "./store";//默认读取当前文件夹下的index.js文件
 import axios from "axios";
 // 虽然引入了axios但是以后只要用，那每个组件都要再引一下，所以要借助vue-axios
 import VueAxios from "vue-axios";

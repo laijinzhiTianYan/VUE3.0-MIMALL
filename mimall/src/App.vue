@@ -7,6 +7,11 @@
 
 <script>
 // import storage from "./storage";
+import { mapActions } from "vuex";//当方法变量过多时 ，可以用...mapActions语法糖来简写
+// 其实就是省略了写很多this.$store.dispatch("方法",参数)
+// 改为了上面简单的传参this.方法(参数) ，写n个
+// 然后下面统一用...mapActions(["方法1","方法2"...])这样可以少些一些字
+// 当然本质还是this.$store.dispatch("方法",参数)
 export default {
   data() {
     return {
@@ -50,13 +55,23 @@ export default {
   },
   methods: {
     getUser(){
-      this.axios.get("/user").then(()=>{
-        //to-do 保存到vuex当中去
+      //这里再像后台请求，就是为了考虑刷新刷新以后页面数据的连贯性
+      this.axios.get("/user").then((res)=>{
+        //这里也要用vuex来存一下状态，不然navheader组件第一次加载成功
+        // 后续一刷新就又没了
+        // 即便到这一步，刷新了仍然也会跳出登陆状态，因为axios拿数据有延迟，
+        // 终端组件使用的时候也会达不到预期，因此需要在终端组件中使用computed
+        // 此外如果不用...mapActions，这里就是写法1：
+        // this.$store.dispatch('saveUserName', res.username)
+        // 使用的话，写法2：
+        this.saveUserName(res.username);
       })
     },
+    ...mapActions(["saveUserName"]),
     getCartCount(){
-      this.axios.get("/carts/products/sum").then(()=>{
-        //to-do 保存到vuex当中去
+      this.axios.get("/carts/products/sum").then((res)=>{
+        // 这个请求拉回的是单个的数，network中对应的是sum项
+        this.$store.dispatch('saveCartCount', res)
       })
     }
   }

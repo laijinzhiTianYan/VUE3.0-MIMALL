@@ -35,7 +35,7 @@
             href="javascript:"
             class="my-cart"
             @click="goToCart"
-          ><span class="icon-cart"></span>购物车</a>
+          ><span class="icon-cart"></span>购物车  {{cartCount}}</a>
         </div>
       </div>
     </div>
@@ -291,11 +291,14 @@
 </template>
 
 <script>
+import { mapState } from "vuex";//使用...mapState结构数据示例
 export default {
   name: "nav-header",
   data() {
     return {
-      username: "",
+      //username: this.$store.state.username,
+      //注意如果用上面这种直接使用vuex时，如果某个数据需要异步加载，可能会有延迟，
+      // 提前使用尚未就位的数据，可能达不到预期，解决方法就是使用computed动态监视store中的数据然后返回给组件
       phoneList: []
     };
   },
@@ -334,6 +337,16 @@ export default {
       // 路由取参数方法，使用router.params 或者router.query取参
       this.$router.push("/cart");
     }
+  },
+  computed: {
+    // username(){
+    //   return this.$store.state.username;
+    // },
+    // cartCount(){
+    //   return this.$store.state.cartCount;
+    // }
+    // 也可以用语法糖写法...mapState([""]) 效果都是等同的
+    ...mapState(["username","cartCount"])
   },
   // 数据过滤器，vue3.0可能有变动，注意一下
   filters: {

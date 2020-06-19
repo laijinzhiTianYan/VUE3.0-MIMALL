@@ -18,7 +18,7 @@
                       <!-- 内循环4次，迭代内部对象，给没有数据的留退路 -->
                       <a :href="sub ? '/#/product/' + sub.id : '#'">
                         <img
-                          :src="sub['img'] || '/imgs/item-box-1.png'"
+                          v-lazy="sub['img'] || '/imgs/item-box-1.png'"
                           alt="sub[name]"
                         />
                         {{ sub.name || "待插入" }}
@@ -107,9 +107,12 @@
       <div class="product-box">
         <div class="container">
           <h2>手机</h2>
+          <div class="product-box-title-control">
+            <a href="">查看更多</a>
+          </div>
           <div class="wrapper">
             <div class="banner-left">
-              <img src="/imgs/mix-alpha.jpg" alt="" />
+              <img v-lazy="'/imgs/mix-alpha.jpg'" alt="" />
             </div>
 
             <div class="list-box">
@@ -121,7 +124,7 @@
                     >新品</span
                   >
                   <div class="list-item-img">
-                    <img :src="item.mainImage" alt="" />
+                    <img v-lazy="item.mainImage" alt="" />
                   </div>
                   <div class="list-item-info">
                     <h3>{{ item.name }}</h3>
@@ -507,6 +510,48 @@ export default {
         position: absolute;
         top: 30px;
         left: 0;
+        font-size: 22px;
+      }
+      .product-box-title-control{
+        position: absolute;
+        top: 30px;
+        right: 0;
+        a{
+          display: inline-block;
+          font-size: 20px;
+          line-height: 20px;
+          margin-right: 30px;
+          position: relative;
+          color: $colorD;
+          &:hover{
+            color: $colorA;
+          }
+          &::after{
+              outline: blue dashed .1px;
+              content: "";
+              // @include bgImg(15,15,"/imgs/icon-arrow.png");
+              width: 10px;
+              height: 10px;
+              // border-color: transparent transparent white white;
+              border-width: 10px;
+              border-color: red;
+              background-color: currentColor;
+              position: absolute;
+              top: 2.5px;
+              right: -28px;
+          }
+          &::before{
+              content: "";
+              outline: .1px red solid;
+              background: currentColor;
+              width: 22px;
+              height: 22px;
+              border-radius: 50%;
+              position: absolute;
+              top: -1px;
+              right: -30px;
+            }
+        }
       }
       .wrapper {
         //n内容区

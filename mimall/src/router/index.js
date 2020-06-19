@@ -20,7 +20,7 @@ const routes = [
     name: "home",
     component: Home,
     // 默认重定向到index中
-    redirect: "/index",
+    // redirect: "/index",
     // 根目录的子path中 / 可有可无
     children: [
       {

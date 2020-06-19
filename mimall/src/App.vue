@@ -67,7 +67,7 @@ export default {
         this.saveUserName(res.username);
       })
     },
-    ...mapActions(["saveUserName"]),
+    ...mapActions(["saveUserName"]),//传参的话已经在上面传入了，这里直接分发即可
     getCartCount(){
       this.axios.get("/carts/products/sum").then((res)=>{
         // 这个请求拉回的是单个的数，network中对应的是sum项
